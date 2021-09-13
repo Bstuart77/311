@@ -1,7 +1,7 @@
-package p1.copy;
+package p1;
 
 public class Node<T> {
-	T left, right;
+	Node<T> left, right;
 	T data;
 
 	public Node(T data) {
@@ -9,22 +9,28 @@ public class Node<T> {
 		left = right = null;
 	}
 
-	public Node(T data, T left, T right) {
-		this.data = data;
-		this.left = left;
-		this.right = right;
-	}
-
-	public T getLeft() {
+	public Node<T> getLeft() {
 		return left;
 	}
 
-	public T getRight() {
+	public void setLeft(Node<T> left) {
+		this.left = left;
+	}
+
+	public Node<T> getRight() {
 		return right;
 	}
 
-	public T getNode() {
+	public void setRight(Node<T> right) {
+		this.right = right;
+	}
+
+	public T getData() {
 		return data;
+	}
+
+	public void setData(T data) {
+		this.data = data;
 	}
 
 	@Override
