@@ -35,7 +35,7 @@ public class Node<T> {
 
 	@Override
 	public String toString() {
-		return "Data = " + data + " ,left=" + left + ", right=" + right;
+		return "\nData = " + data + " ,left=" + left + ", right=" + right;
 	}
 
 	

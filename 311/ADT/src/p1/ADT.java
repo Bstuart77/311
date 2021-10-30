@@ -5,17 +5,33 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ADT{
+public class ADT {
 
 	private static Person person;
+	static BST bst = new BST();
+	static Node<Person> node;
 
 	public static <T> void instantiate() throws IOException, ClassNotFoundException {
-		BST bst = new BST();
+		System.out.println("------INSERTING---------");
+		populate();	//wworks
+
+		Person person = new Person("Brian Stuart", 1, 4, 1999, SearchType.NAME);
 		
-		Node<Person> node = new Node<Person>(person);
+		System.out.println("----SEARCH FOR NAME Brian Stuart----");
 		
+		Node<Person> toBeSearched = new Node<Person>(person);
+		search(toBeSearched);	
+		
+		System.out.println("---INORDER---");
+		inOrder();	
+		
+		//bst.deleteNode(node, "Brian Stuart");
+
+	}
+
+	public static void populate() throws NumberFormatException, IOException {
 		File file = new File("src/p1/People.txt");
-		
+
 		BufferedReader br = new BufferedReader(new FileReader(file));
 
 		String line = "";
@@ -28,10 +44,21 @@ public class ADT{
 			int year = Integer.parseInt(people[3]);
 
 			person = new Person(name, month, day, year);
-			//System.out.println(person);
-			bst.insert(node, person);
+			node = new Node<Person>(person);
+
+			bst.insert(person);
 			
-			bst.inOrder(node);
+			
 		}
+		br.close();
+	}
+
+	public static void search(Node<Person> node) {
+		bst.search(bst.getRoot(), node.getData());
+	}
+
+	public static void inOrder() {
+		bst.inOrder(bst.getRoot());
+
 	}
 }

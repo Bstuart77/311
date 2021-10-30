@@ -10,5 +10,4 @@ public class Driver<T extends Comparable<T>> {
 		ADT.instantiate();
 		
 	}
-
 }
