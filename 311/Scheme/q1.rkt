@@ -1,0 +1,5 @@
+(define myList(list 0 1 -6 9 4 -3))
+(define(absolute myList)
+  (cond (not (null?))
+        )
+  )
