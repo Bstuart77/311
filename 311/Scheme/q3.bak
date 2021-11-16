@@ -1,0 +1,24 @@
+(define list1 (list -3 -6 -1 9))
+(define list2 (list -8 62 71 -9))
+(define list3 (list 7 3 -21 79))
+(define list4 (list -3 -6 -1 9 0 -71 56))
+(define list5 (list -9 6 9 -2))
+(define list6 (list 10 -4 2 -7 9 -5))
+(define list7 (list 2 45 -79 -56 -2))
+(define list8 (list 92 19993342 -968234932 59203 -923045))
+(define list9 (list -23 -94 -42 8))
+(define list10 (list -1 -99 -4 9 10 65))
+
+(define (bubble-up L)
+  (if (null? (cdr L))   
+      L    
+      (if (< (car L) (cadr L))   
+          (cons (car L) (bubble-up (cdr L)))   
+          (cons (cadr L) (bubble-up (cons (car L) (cddr L)))))))
+
+(define (bubble-sort-aux N L)    
+  (cond ((= N 1) (bubble-up L))   
+        (else (bubble-sort-aux (- N 1) (bubble-up L)))))
+
+(define (bubbleH L) 
+  (bubble-sort-aux (length L) L))
