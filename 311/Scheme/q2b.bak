@@ -10,11 +10,11 @@
 (define list10 (list 99 99 99 1 99 99 1))
 
 (define (findAndReplace x y lst)
-  (cond ((null? lst) '())               ;if lst is null return empty list
-        ((equal? (car lst) x)           ;if x = first element in list
-         (cons y (findAndReplace x y (cdr lst))))    ;pair(append) replacement value (y), recursive call to next element  
-        (else
-         (cons (car lst) (findAndReplace x y (cdr lst))))))   ;pair (append) first element and recursive call to next element
+  (cond ((null? lst) '()) 
+        (cons (findAndReplace x y (car lst)) (findAndReplace x y (cdr lst)))) 
+  ((eq? (car lst) x) (cons y (findAndReplace x y (cdr lst))))
+  (else
+   (cons (car lst) (findAndReplace x y (cdr lst))))))
 
 (findAndReplace "a" "c" list1)
 (findAndReplace "e" "f" list2)

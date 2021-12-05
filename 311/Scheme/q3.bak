@@ -9,16 +9,27 @@
 (define list9 (list -23 -94 -42 8))
 (define list10 (list -1 -99 -4 9 10 65))
 
-(define (bubble-up L)
-  (if (null? (cdr L))   
-      L    
-      (if (< (car L) (cadr L))   
-          (cons (car L) (bubble-up (cdr L)))   
-          (cons (cadr L) (bubble-up (cons (car L) (cddr L)))))))
+(define (bubbleSort lst)
+  (if (null? (cdr lst)) lst    
+      (if (< (car lst) (cadr lst))   
+          (cons (car lst) (bubbleSort (cdr lst)))   
+          (cons (cadr lst) (bubbleSort (cons (car lst) (cddr lst)))))))
 
-(define (bubble-sort-aux N L)    
-  (cond ((= N 1) (bubble-up L))   
-        (else (bubble-sort-aux (- N 1) (bubble-up L)))))
+(define (bubbleSortHelper n lst)    
+  (cond ((= n 1) (bubbleSort lst))   
+        (else (bubbleSortHelper (- n 1) (bubbleSort lst)))))
 
-(define (bubbleH L) 
-  (bubble-sort-aux (length L) L))
+(define (main lst) 
+  (bubbleSortHelper (length lst) lst))
+
+(main list1)
+(main list2)
+(main list3)
+(main list4)
+(main list5)
+(main list6)
+(main list7)
+(main list8)
+(main list9)
+(main list10)
+

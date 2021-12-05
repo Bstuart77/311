@@ -9,27 +9,29 @@
 (define list9 (list -23 -94 -42 8))
 (define list10 (list -1 -99 -4 9 10 65))
 
-(define (bubbleSort lst)
-  (if (null? (cdr lst)) lst    
-      (if (< (car lst) (cadr lst))   
-          (cons (car lst) (bubbleSort (cdr lst)))   
-          (cons (cadr lst) (bubbleSort (cons (car lst) (cddr lst)))))))
+(define (bubbleSort lst)       ;define function bubblesort 
+  (cond ((null? (cdr lst)) lst)     
+        ((< (car lst) (cadr lst))   ;if first element < the rest of the list
+         (cons (car lst) (bubbleSort (cdr lst))))   ;pair (append) first element and recursive call to next element
+        (else
+         (cons (cadr lst) (bubbleSort (cons (car lst) (cddr lst)))))))  ;pair (append) the rest of the list and recursive call bubbleSort the first element and the rest of the elements
+
 
 (define (bubbleSortHelper n lst)    
-  (cond ((= n 1) (bubbleSort lst))   
-        (else (bubbleSortHelper (- n 1) (bubbleSort lst)))))
+  (cond ((= n 1) (bubbleSort lst))        ;cond (if) length = 1, call bubbleSort giving the given list
+        (else (bubbleSortHelper (- n 1) (bubbleSort lst)))))   ;else recursive call bubbleSortHelper given length-1 and run run the bubbleSort method 
 
-(define (Main lst) 
-  (bubbleSortHelper (length lst) lst))
+(define (main lst) 
+  (bubbleSortHelper (length lst) lst))      ;call bubbleSortHelper with length of the given list and the list
 
-(Main list1)
-(Main list2)
-(Main list3)
-(Main list4)
-(Main list5)
-(Main list6)
-(Main list7)
-(Main list8)
-(Main list9)
-(Main list10)
+(main list1)
+(main list2)
+(main list3)
+(main list4)
+(main list5)
+(main list6)
+(main list7)
+(main list8)
+(main list9)
+(main list10)
 

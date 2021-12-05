@@ -9,15 +9,14 @@
 (define list9 (list "a" "d" "e" 6 8 "e" "c" 3 6 291))
 (define list10 (list 99 99 99 1 99 99 1))
 
+(define (remove c lst)          ;define remove function that takes in a char and list
+  (cond ((null? lst) '())       ;cond - equilevent to if: lst is null, return empty list
+        ((equal? (car lst) c)   ;if c = first element of list; (or first available element)
+         (remove c (cdr lst)))  ;recursive call remove c and move pointer to the next element
+        (else                   ;else
+         (cons (car lst) (remove c (cdr lst))))))  ;add to the list and recursive call remove c with the rest of the elements 
 
-(define (remove c lst)
-  (if (null? lst)
-      '()
-      (let ((h (car lst)))
-        ((if (eqv? c h)
-             (lambda (y) y)
-             (lambda (y) (cons h y)))
-         (remove c (cdr lst))))))
+
 
 (remove "a" list1)
 (remove "c" list2)

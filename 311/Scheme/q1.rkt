@@ -9,21 +9,19 @@
 (define list9 (list -23 -94 -42 8))
 (define list10 (list -1 -99 -4 9 10 65))
 
-(define (absolute lst) (abs lst))
+(define (absoluteValue func lst)     ;define function called absoluteValue, take in a function and a list
+  (cond                              ;cond - equilevent to if
+    ((null? lst) '())                ;if lst is null, return empty list
+    (else (cons (func (car lst))     ;else construct list with function abs of the first item
+                (absoluteValue func (cdr lst))))))  ;recursive call with function abs the rest of the elements
 
-(define (absoluteValue func lst)
-  (cond
-    ((null? lst) '())
-    (else (cons (func (car lst))
-                (absoluteValue func (cdr lst))))))
-
-(absoluteValue absolute list1)
-(absoluteValue absolute list2)
-(absoluteValue absolute list3)
-(absoluteValue absolute list4)
-(absoluteValue absolute list5)
-(absoluteValue absolute list6)
-(absoluteValue absolute list7)
-(absoluteValue absolute list8)
-(absoluteValue absolute list9)
-(absoluteValue absolute list10)
+(absoluteValue abs list1)
+(absoluteValue abs list2)
+(absoluteValue abs list3)
+(absoluteValue abs list4)
+(absoluteValue abs list5)
+(absoluteValue abs list6)
+(absoluteValue abs list7)
+(absoluteValue abs list8)
+(absoluteValue abs list9)
+(absoluteValue abs list10)
